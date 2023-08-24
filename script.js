@@ -48,7 +48,6 @@ class boardNode {
 }
 
 console.log(KnightTravails([0, 0], [2, 4]));
-//Parent of the parent is null. IDK WHY!!
 
 function KnightTravails(start, end) {
   //Add the very first node
