@@ -48,6 +48,7 @@ class boardNode {
 }
 
 console.log(KnightTravails([0, 0], [2, 4]));
+//Parent of the parent is null. IDK WHY!!
 
 function KnightTravails(start, end) {
   //Add the very first node
@@ -57,10 +58,10 @@ function KnightTravails(start, end) {
   if (JSON.stringify(start) === JSON.stringify(end)) {
     return q.shift();
   } else {
+    const startNode = q[0];
     //2. Shift queue
     q.shift();
 
-    const startNode = new boardNode(start);
     //3. Get neighbours
     startNode.getNeighbours();
 
