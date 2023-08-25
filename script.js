@@ -45,9 +45,23 @@ class boardNode {
     }
     this.neighbours = neighbours;
   }
-}
+  depth(parent = this.parent, steps = 0) {
+    if (parent === null) return steps;
+    else {
+      steps++;
+      return this.depth(parent.parent, steps);
+    }
+  }
 
-console.log(KnightTravails([0, 0], [2, 4]));
+  //Path returns an array with positions visited. path[0] is the last position i.e.: goal position
+  path(node = this, path = []) {
+    if (node.parent === null) return path;
+    else {
+      path.push(node.index);
+      return this.path(node.parent, path);
+    }
+  }
+}
 
 function KnightTravails(start, end) {
   //Add the very first node
@@ -73,3 +87,9 @@ function KnightTravails(start, end) {
     return KnightTravails(q[0].index, end);
   }
 }
+
+const node = KnightTravails([0, 0], [2, 4]);
+const path = node.path();
+console.log(path);
+
+//Could optimise already taken paths. So that the queue doesn't get so many nodes
